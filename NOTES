@@ -1,0 +1,36 @@
+January 2024: Original files downloaded from:
+    https://github.com/freebsd/freebsd-src/tree/main/usr.bin/sed
+    https://github.com/freebsd/freebsd-src/blob/main/lib/libc/gen/err.c
+    https://github.com/freebsd/freebsd-src/blob/main/lib/libc/locale/wcwidth.c
+    https://github.com/freebsd/freebsd-src/blob/main/lib/libc/stdio/getline.c   REWRITTEN
+    https://github.com/freebsd/freebsd-src/blob/main/lib/libc/stdlib/getopt.c
+    https://github.com/freebsd/freebsd-src/blob/main/lib/libc/stdlib/reallocarray.c
+    https://www.cl.cam.ac.uk/~mgk25/ucs/wcwidth.c
+with selected header files from:
+    https://github.com/freebsd/freebsd-src/blob/main/include
+(being err.h libgen.h regex.h); and
+    https://github.com/freebsd/freebsd-src/blob/main/sys/sys/_iovec.h       [ALLOW_IOCTL]
+    https://github.com/freebsd/freebsd-src/blob/main/sys/sys/_null.h        [not req'd]
+    https://github.com/freebsd/freebsd-src/blob/main/sys/sys/_sigset.h      [not req'd]
+    https://github.com/freebsd/freebsd-src/blob/main/sys/sys/_types.h
+    https://github.com/freebsd/freebsd-src/blob/main/sys/sys/_uio.h         [ALLOW_IOCTL]
+    https://github.com/freebsd/freebsd-src/blob/main/sys/sys/_winsize.h     [ALLOW_IOCTL]
+    https://github.com/freebsd/freebsd-src/blob/main/sys/sys/cdefs.h        **
+    https://github.com/freebsd/freebsd-src/blob/main/sys/sys/err.h          *edited
+    https://github.com/freebsd/freebsd-src/blob/main/sys/sys/filio.h        [ALLOW_IOCTL]
+    https://github.com/freebsd/freebsd-src/blob/main/sys/sys/ioccom.h       [ALLOW_IOCTL]
+    https://github.com/freebsd/freebsd-src/blob/main/sys/sys/ioctl.h        [ALLOW_IOCTL]
+    https://github.com/freebsd/freebsd-src/blob/main/sys/sys/libgen.h       [ALLOW_IOCTL]
+    https://github.com/freebsd/freebsd-src/blob/main/sys/sys/mman.h         [not req'd]
+    https://github.com/freebsd/freebsd-src/blob/main/sys/sys/param.h        [not req'd]
+    https://github.com/freebsd/freebsd-src/blob/main/sys/sys/signal.h       [not req'd]
+    https://github.com/freebsd/freebsd-src/blob/main/sys/sys/sockio.h       [ALLOW_IOCTL]
+    https://github.com/freebsd/freebsd-src/blob/main/sys/sys/syslimits.h    [not req'd]
+    https://github.com/freebsd/freebsd-src/blob/main/sys/sys/ttycom.h       [ALLOW_IOCTL]
+    https://github.com/freebsd/freebsd-src/blob/main/sys/sys/uio.h          [ALLOW_IOCTL]
+    https://github.com/freebsd/freebsd-src/blob/main/lib/libc/locale/collate.h
+    https://github.com/freebsd/freebsd-src/tree/main/lib/libc/regex
+* Removed in-place editing support [main.c; ALLOW_INPLACE_EDITING]
+* Removed ioctl() supported for # screen columns [process.c; ALLOW_IOCTL]
+* HEAVILY edited cdefs.h -- compiler dependent definitions
+* Likely made dodgy changes regarding locales and collation [to review]
