@@ -46,6 +46,7 @@
 #include <err.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <io.h>
 #include <limits.h>
 #include <regex.h>
 #include <stdio.h>
@@ -243,12 +244,12 @@ redirect:
 			case 'w':
 				if (pd)
 					break;
-				if (cp->u.fd == -1 && (cp->u.fd = open(cp->t,
+				if (cp->u.fd == -1 && (cp->u.fd = _open(cp->t,
 				    O_WRONLY|O_APPEND|O_CREAT|O_TRUNC,
 				    DEFFILEMODE)) == -1)
 					err(1, "%s", cp->t);
-				if (write(cp->u.fd, ps, psl) != (ssize_t)psl ||
-				    write(cp->u.fd, "\n", 1) != 1)
+				if (_write(cp->u.fd, ps, psl) != (ssize_t)psl ||
+				    _write(cp->u.fd, "\n", 1) != 1)
 					err(1, "%s", cp->t);
 				break;
 			case 'x':
@@ -481,11 +482,11 @@ substitute(struct s_command *cp)
 
 	/* Handle the 'w' flag. */
 	if (cp->u.s->wfile && !pd) {
-		if (cp->u.s->wfd == -1 && (cp->u.s->wfd = open(cp->u.s->wfile,
+		if (cp->u.s->wfd == -1 && (cp->u.s->wfd = _open(cp->u.s->wfile,
 		    O_WRONLY|O_APPEND|O_CREAT|O_TRUNC, DEFFILEMODE)) == -1)
 			err(1, "%s", cp->u.s->wfile);
-		if (write(cp->u.s->wfd, ps, psl) != (ssize_t)psl ||
-		    write(cp->u.s->wfd, "\n", 1) != 1)
+		if (_write(cp->u.s->wfd, ps, psl) != (ssize_t)psl ||
+		    _write(cp->u.s->wfd, "\n", 1) != 1)
 			err(1, "%s", cp->u.s->wfile);
 	}
 	return (1);
@@ -780,12 +781,12 @@ cfclose(struct s_command *cp, struct s_command *end)
 	for (; cp != end; cp = cp->next)
 		switch(cp->code) {
 		case 's':
-			if (cp->u.s->wfd != -1 && close(cp->u.s->wfd))
+			if (cp->u.s->wfd != -1 && _close(cp->u.s->wfd))
 				err(1, "%s", cp->u.s->wfile);
 			cp->u.s->wfd = -1;
 			break;
 		case 'w':
-			if (cp->u.fd != -1 && close(cp->u.fd))
+			if (cp->u.fd != -1 && _close(cp->u.fd))
 				err(1, "%s", cp->t);
 			cp->u.fd = -1;
 			break;

@@ -42,6 +42,7 @@
 #include <err.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <io.h>
 #include <limits.h>
 #include <regex.h>
 #include <stdbool.h>
@@ -740,7 +741,7 @@ compile_flags(char *p, struct s_subst *s)
 			*q = '\0';
 			if (q == wfile)
 				errx(1, "%lu: %s: no wfile specified", linenum, fname);
-			s->wfile = strdup(wfile);
+			s->wfile = _strdup(wfile);
 			if (!aflag && (s->wfd = _open(wfile,
 			    _O_WRONLY|_O_APPEND|_O_CREAT|_O_TRUNC,
 			    DEFFILEMODE)) == -1)

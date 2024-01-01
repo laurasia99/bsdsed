@@ -29,16 +29,12 @@
  * SUCH DAMAGE.
  */
 
-//MSVC#include "namespace.h"
 #include <err.h>
 #include <errno.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-//MSVC#include "un-namespace.h"
-
-//MSVC#include "libc_private.h"
 
 char *getprogname(void);
 

@@ -1,7 +1,7 @@
 O = obj
 S = .
 CC = cl
-CFLAGS = /nologo /O2 /D_CRT_SECURE_NO_WARNINGS /I. /Isys
+CFLAGS = /nologo /O2 /D_CRT_SECURE_NO_WARNINGS /I. /Isys /W3
 LDFLAGS = /nologo
 # Note regex\engine.c included by other files
 OBJS = $O\compile.obj $O\main.obj $O\misc.obj $O\process.obj \

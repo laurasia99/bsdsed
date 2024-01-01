@@ -4,17 +4,13 @@
  *  - Assumes text file, with no embedded NUL characters
  */
 
-#include <sys/_types.h>
-#include <sys/types.h>
 #include <errno.h>
-#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 #define MAXLINE     65536
 
-ssize_t
+int
 getline(char ** linep, size_t * linecapp, FILE * fp)
 {
 	static char buf[MAXLINE];
@@ -40,5 +36,5 @@ getline(char ** linep, size_t * linecapp, FILE * fp)
 	}
 	memcpy(*linep, buf, linelen);
 
-	return (ssize_t)linelen;
+	return (int)linelen;
 }

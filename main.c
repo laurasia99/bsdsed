@@ -35,8 +35,6 @@
  */
 
 #include <sys/types.h>
-//MSVC#include <sys/mman.h>
-//MSVC#include <sys/param.h>
 #include <sys/stat.h>
 
 #include <err.h>
@@ -330,9 +328,11 @@ again:
 int
 mf_fgets(SPACE *sp, enum e_spflag spflag)
 {
+#ifdef ALLOW_INPLACE_EDITING
 	struct stat sb;
-	ssize_t len;
 	char *dirbuf, *basebuf;
+#endif
+	size_t len;
 	static char *p = NULL;
 	static size_t plen = 0;
 	int c;

@@ -32,19 +32,8 @@
 #ifndef _ERR_H_
 #define	_ERR_H_
 
-#ifndef _WIN32
-/*
- * Don't use va_list in the err/warn prototypes.   Va_list is typedef'd in two
- * places (<machine/varargs.h> and <machine/stdarg.h>), so if we include one
- * of them here we may collide with the utility's includes.  It's unreasonable
- * for utilities to have to include one of them to include err.h, so we get
- * __va_list from <sys/_types.h> and use it.
- */
-#include <sys/_types.h>
-#else
 #include <sys/cdefs.h>
 #include <stdarg.h>
-#endif
 
 void	err(int, const char *, ...) __dead2 __printf0like(2, 3);
 void	verr(int, const char *, va_list) __dead2 __printf0like(2, 0);

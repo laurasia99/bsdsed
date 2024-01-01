@@ -36,18 +36,7 @@
 #ifndef _REGEX_H_
 #define	_REGEX_H_
 
-#include <sys/cdefs.h>
-#include <sys/_types.h>
-
-/* types */
-typedef	__off_t		regoff_t;
-
-#ifdef _SIZE_T_DECLARED
-#ifndef _WIN32
-typedef	__size_t	size_t;
-#endif
-#define	_SIZE_T_DECLARED
-#endif
+typedef	__int64 regoff_t;
 
 typedef struct {
 	int re_magic;
@@ -102,17 +91,14 @@ typedef struct {
 #define	REG_LARGE	01000	/* force large representation */
 #define	REG_BACKR	02000	/* force use of backref code */
 
-__BEGIN_DECLS
-int	regcomp(regex_t * __restrict, const char * __restrict, int);
-size_t	regerror(int, const regex_t * __restrict, char * __restrict, size_t);
+int	regcomp(regex_t *, const char *, int);
+size_t	regerror(int, const regex_t *, char *, size_t);
 /*
  * XXX forth parameter should be `regmatch_t [__restrict]', but isn't because
  * of a bug in GCC 3.2 (when -std=c99 is specified) which perceives this as a
  * syntax error.
  */
-int	regexec(const regex_t * __restrict, const char * __restrict, size_t,
-	    regmatch_t * __restrict, int);
+int	regexec(const regex_t *, const char *, size_t, regmatch_t *, int);
 void	regfree(regex_t *);
-__END_DECLS
 
 #endif /* !_REGEX_H_ */

@@ -31,14 +31,10 @@
  * SUCH DAMAGE.
  */
 
-//MSVC#include "namespace.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-//MSVC#include "un-namespace.h"
-
-//MSVC#include "libc_private.h"
 
 char *getprogname(void);
 

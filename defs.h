@@ -42,6 +42,7 @@ typedef	unsigned short	u_short;
 typedef	unsigned int	u_int;
 typedef	unsigned long	u_long;
 
+typedef long ssize_t;
 /* Extract from FreeBSD <limits.h> */
 #define	_POSIX2_LINE_MAX	2048
 #endif

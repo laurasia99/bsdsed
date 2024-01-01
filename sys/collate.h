@@ -39,7 +39,6 @@
 #include <stdint.h>
 #include <sys/types.h>
 #include <limits.h>
-//MSVC#include "xlocale_private.h"
 
 /*
  * Work around buildworld bootstrapping from older systems whose limits.h
@@ -126,7 +125,7 @@ struct xlocale_collate {
 	collate_subst_t	*subst_table[COLL_WEIGHTS_MAX];
 };
 
-__BEGIN_DECLS
+//MSVC __BEGIN_DECLS
 //MSVC int	__collate_load_tables(const char *);
 //MSVC int	__collate_equiv_value(locale_t, const wchar_t *, size_t);
 //MSVC void	_collate_lookup(struct xlocale_collate *,const wchar_t *, int *, int *,
@@ -137,6 +136,6 @@ int	__wcollate_range_cmp(wchar_t, wchar_t);
 //MSVC 	size_t);
 //MSVC size_t	_collate_sxfrm(struct xlocale_collate *, const wchar_t *, char *,
 //MSVC 	size_t);
-__END_DECLS
+//MSVC __END_DECLS
 
 #endif /* !_COLLATE_H_ */

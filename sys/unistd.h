@@ -8,3 +8,4 @@ extern int optind, opterr, optopt;
 #define	STDOUT_FILENO	1	/* standard output file descriptor */
 #define	STDERR_FILENO	2	/* standard error file descriptor */
 
+int getline(char ** linep, size_t * linecapp, FILE * fp);

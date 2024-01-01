@@ -57,3 +57,4 @@ int	 lastline(void);
 void	 process(void);
 void	 resetstate(void);
 char	*strregerror(int, regex_t *);
+int 	 wcwidth(wchar_t);
