@@ -1,5 +1,9 @@
-O = obj
-S = .
+!IFNDEF O
+O=obj
+!ENDIF
+!IFNDEF S
+S=.
+!ENDIF
 CC = cl
 CFLAGS = /nologo /O2 /D_CRT_SECURE_NO_WARNINGS /I. /Isys /W3
 LDFLAGS = /nologo
